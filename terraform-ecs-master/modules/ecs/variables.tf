@@ -1,6 +1,14 @@
 variable "environment" {
   description = "The name of the environment"
 }
+variable "public_subnet_ids" {
+  type        = list
+  description = "List of public subnet ids to place the loadbalancer in"
+}
+
+variable "vpc_id" {
+  description = "The VPC id"
+}
 
 variable "cluster" {
   default     = "default"
