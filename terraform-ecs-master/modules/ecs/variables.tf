@@ -70,11 +70,12 @@ variable "vpc_id" {
   description = "A name to describe the environment we're creating."
 }
 variable "public_subnet_ids" {
-   description = "A name to describe the environment we're creating."
+  type        = list
+  description = "List of public subnet ids to place the loadbalancer in"
 }
-
 variable "private_subnet_ids" {
-   description = "A name to describe the environment we're creating."
+  type        = list
+  description = "The list of private subnets to place the instances in"
 }
 
 variable "ecs_config" {
