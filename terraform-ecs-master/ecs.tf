@@ -32,15 +32,19 @@ variable "environment" {
 variable "vpc_id" {
   description = "A name to describe the environment we're creating."
 }
+
+
 variable "public_subnet_ids" {
-   description = "A name to describe the environment we're creating."
+  type        = list
+  description = "List of public subnet ids to place the loadbalancer in"
+}
+variable "private_subnet_ids" {
+  type        = list
+  description = "The list of private subnets to place the instances in"
 }
 
 variable "depends_id" {}
 
-variable "private_subnet_ids" {
-   description = "A name to describe the environment we're creating."
-}
 variable "aws_ecs_ami" {
   description = "The AMI to seed ECS instances with."
 }
