@@ -6,6 +6,7 @@ variable "cluster" {
   default     = "default"
   description = "The name of the ECS cluster"
 }
+variable "depends_id" {}
 
 variable "instance_group" {
   default     = "default"
@@ -64,6 +65,16 @@ variable "ecs_aws_ami" {
 variable "custom_userdata" {
   default     = ""
   description = "Inject extra command in the instance template to be run on boot"
+}
+variable "vpc_id" {
+  description = "A name to describe the environment we're creating."
+}
+variable "public_subnet_ids" {
+   description = "A name to describe the environment we're creating."
+}
+
+variable "private_subnet_ids" {
+   description = "A name to describe the environment we're creating."
 }
 
 variable "ecs_config" {

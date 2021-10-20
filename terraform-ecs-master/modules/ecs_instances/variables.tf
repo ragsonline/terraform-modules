@@ -10,7 +10,6 @@ variable "cloudwatch_prefix" {
 variable "cluster" {
   description = "The name of the cluster"
 }
-
 variable "instance_group" {
   default     = "default"
   description = "The name of the instances that you consider as a group"

@@ -3,7 +3,6 @@ module "ecs" {
   source = "./modules/ecs"
 
   environment          = var.environment
-  cluster              = var.environment
   cloudwatch_prefix    = "${var.environment}"           #See ecs_instances module when to set this and when not!
   vpc_cidr             = var.vpc_cidr
   public_subnet_cidrs  = var.public_subnet_cidrs
@@ -15,12 +14,33 @@ module "ecs" {
   key_name             = aws_key_pair.ecs.key_name
   instance_type        = var.instance_type
   ecs_aws_ami          = var.aws_ecs_ami
+  vpc_id               = var.vpc_id
+  public_subnet_ids    = var.public_subnet_ids
+  private_subnet_ids   = var.private_subnet_ids
+  depends_id           = var.depends_id
+}
+
+resource "aws_key_pair" "ecs" {
+  key_name   = "ecs-key-${var.environment}"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCtMljjj0Ccxux5Mssqraa/iHHxheW+m0Rh17fbd8t365y9EwBn00DN/0PjdU2CK6bjxwy8BNGXWoUXiSDDtGqRupH6e9J012yE5kxhpXnnkIcLGjkAiflDBVV4sXS4b3a2LSXL5Dyb93N2GdnJ03FJM4qDJ8lfDQxb38eYHytZkmxW14xLoyW5Hbyr3SXhdHC2/ecdp5nLNRwRWiW6g9OA6jTQ3LgeOZoM6dK4ltJUQOakKjiHsE+jvmO0hJYQN7+5gYOw0HHsM+zmATvSipAWzoWBWcmBxAbcdW0R0KvCwjylCyRVbRMRbSZ/c4idZbFLZXRb7ZJkqNJuy99+ld41 ecs@aws.fake"
 }
 
 variable "environment" {
   description = "A name to describe the environment we're creating."
 }
 
+variable "vpc_id" {
+  description = "A name to describe the environment we're creating."
+}
+variable "public_subnet_ids" {
+   description = "A name to describe the environment we're creating."
+}
+
+variable "depends_id" {}
+
+variable "private_subnet_ids" {
+   description = "A name to describe the environment we're creating."
+}
 variable "aws_ecs_ami" {
   description = "The AMI to seed ECS instances with."
 }
