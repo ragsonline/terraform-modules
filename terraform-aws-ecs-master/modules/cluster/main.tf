@@ -4,12 +4,7 @@ resource "aws_ecs_cluster" "ecs" {
 
 resource "aws_cloudwatch_log_group" "instance" {
   name = var.instance_log_group != "" ? var.instance_log_group : format("%s-instance", var.name)
-  tags = merge(
-    var.tags,
-    {
-      "Name" = format("%s", var.name)
-    },
-  )
+  tags =  var.tags
 }
 
 data "aws_iam_policy_document" "instance_policy" {
@@ -87,12 +82,8 @@ resource "aws_security_group" "instance" {
   name        = "${var.name}-container-instance"
   description = "Security Group managed by Terraform"
   vpc_id      = var.vpc_id
-  tags = merge(
-    var.tags,
-    {
-      "Name" = format("%s-container-instance", var.name)
-    },
-  )
+  tags        = var.tags
+  
 }
 
 resource "aws_security_group_rule" "instance_out_all" {
