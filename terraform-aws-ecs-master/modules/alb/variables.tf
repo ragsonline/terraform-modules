@@ -102,6 +102,7 @@ variable "name" {
 
 variable "tags" {
   description = "A map of tags to add to all resources"
+  type        = map(string)
   default     = {}
 }
 
@@ -111,6 +112,7 @@ variable "vpc_id" {
 
 variable "vpc_subnets" {
   description = "List of subnets to put instances in"
+  type        = list(string)
   default     = []
 }
 
