@@ -53,7 +53,7 @@ module "acm" {
 
 module "alb" {
   source  = "terraform-aws-modules/alb/aws"
-  version = "~> 5.2.0"
+  version = "~> 5.6.0"
 
   name = "${var.name}-${random_pet.this.id}"
   load_balancer_type = "application"
