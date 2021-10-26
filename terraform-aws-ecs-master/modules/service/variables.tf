@@ -32,6 +32,7 @@ variable "desired_count" {
 
 variable "log_groups" {
   description = "Log groups that will be created in CloudWatch Logs"
+  type        = list(string)
   default     = []
 }
 
