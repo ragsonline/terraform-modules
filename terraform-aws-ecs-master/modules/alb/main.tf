@@ -43,13 +43,13 @@ resource "aws_route53_record" "hostname" {
 }
 
 
-module "acm" {
-  source  = "terraform-aws-modules/acm/aws"
-  version = "~> 2.0"
+#module "acm" {
+#  source  = "terraform-aws-modules/acm/aws"
+#  version = "~> 2.0"
 
-  domain_name = var.domain_name # trimsuffix(data.aws_route53_zone.domain.name, ".") # Terraform >= 0.12.17
-  zone_id     = data.aws_route53_zone.domain.id
-}
+#  domain_name = var.domain_name # trimsuffix(data.aws_route53_zone.domain.name, ".") # Terraform >= 0.12.17
+#  zone_id     = data.aws_route53_zone.domain.id
+#}
 
 module "alb" {
   source  = "terraform-aws-modules/alb/aws"
@@ -70,14 +70,14 @@ module "alb" {
     }
   ]
 
-  https_listeners = [
-    {
-      port               = 443
-      protocol           = "HTTPS"
-      certificate_arn    = module.acm.this_acm_certificate_arn
-      target_group_index = 0
-    }
-  ]
+  #https_listeners = [
+   # {
+   #   port               = 443
+   #   protocol           = "HTTPS"
+   #   certificate_arn    = module.acm.this_acm_certificate_arn
+   #   target_group_index = 0
+   # }
+ # ]
 
   http_tcp_listeners = [
     {
