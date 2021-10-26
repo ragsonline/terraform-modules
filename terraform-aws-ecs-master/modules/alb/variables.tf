@@ -83,7 +83,7 @@ variable "internal" {
 
 variable "private_zone" {
   description = "Private Route 53 zone (default=false)"
-  default     = false
+  default     = true
 }
 
 variable "log_bucket_name" {
