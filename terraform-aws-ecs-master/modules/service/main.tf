@@ -33,7 +33,7 @@ resource "aws_cloudwatch_log_group" "svc" {
 resource "aws_ecs_service" "svc" {
   name            = var.name
   cluster         = var.cluster
-  task_definition = var.task_definition_arn
+  task_definition = var.task_definition
   desired_count   = var.desired_count
   iam_role        = aws_iam_role.svc.arn
 

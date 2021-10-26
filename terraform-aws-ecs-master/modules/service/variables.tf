@@ -47,7 +47,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "task_definition_arn" {
+variable "task_definition" {
   description = "ARN of the task defintion for the ECS service"
 }
 
